@@ -2,58 +2,39 @@ public class Patient{
     private String name;
 	private int age;
 	private String illness;
-	private Patient nextPatient, prevPatient;
-
-    public Patient(String name, int age, String illness){ //create patient object
+	private Patient next, prev;
+    
+	public Patient(String name, int age, String illness){
 	    this.name = name;
-	    this.age = age;
-	    this.illness = illness;
-	    this.nextPatient = null;
-		this.prevPatient = null;
+		this.age = age;
+		this.illness = illness;
+		this.next = null;
+		this.prev = null;
 	}
 	
-	public Patient getNextPatient(){
-	    return nextPatient;
+	public Patient getNext(){
+	    return next;
 	}
-	public Patient getPrevPatient(){
-	    return prevPatient;
-	}
+	
 	public String getName(){
-	    return name;
+	return name;
 	}
 	public String getIllness(){
-	    return illness;
+	return illness;
 	}
 	public int getAge(){
-	    return age;
+	return age;
 	}
 	
-    public getPatientListEnd(){
-	    return endPatient;
+	public void addPatient(Patient newPatient){
+	    if(this.next == null){
+		    this.next = newPatient;
+		} else { 
+		    this.next.addPatient(newPatient);
+		}
 	}
-	    
-	
-	    public void addPatient(Patient newPatient){ // add new patient reference
-	        if(this.nextPatient == null){
-		        this.nextPatient = newPatient;
-				endPatient = newPatient;
-	    	} else {
-		    this.nextPatient.addPatient(newPatient);
-		    }
-	
-	    }
-	    public boolean deletePatient(Patient patient){
-	        if(this.nextPatient == null){
-		        //patient to be removed not found
-		        return false;
-		    } else if (this.nextPatient.name.equals(patient.name)){
-		        this.nextPatient = nextPatient.nextPatient;
-		        return true;
-		    } else {
-		        return this.nextPatient.deletePatient(patient);
-		    }
-	    }
-}	
-	
-	
-	
+}
+		// The addPatient is applied through the most foremost created patient. It takes the newly created patient object in the main method which has been passed into the  addPatient function and holds this in place.
+		//Then method then uses an if branch to test whether the currently held objects nextPatient pointer is currently pointing to null, if it is then it assigns the nextPatient pointer to the newly created object, if
+		//not then it follows its nextPatient pointer to the next object in the sequence and then by using the dot operator, activates the addPatient method in that object, thus restarting the cycle.
+		
