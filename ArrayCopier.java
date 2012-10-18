@@ -1,16 +1,15 @@
 public class ArrayCopier{
-	int[] src = new int[];
-	int[] dist = new dist[];
-	
-	public void MakeArray(int i){
-	    for(int a =0; a <i.length-1; a++){
-	        i.charAt(a) = src[a];
+
+	public void copy(int[] x, int[] y){
+		int i;
+		for(i=0; i<x.length&&i<y.length; i++){
+			y[i]=x[i];
+		}
+		
+		while(i<y.length){
+			y[i]=0;
+			i++;
 		}
 	}
 	
-	public void copy(src[], dist[]){
-	    for(int a = 0;a < src[].length-1; a++){
-		    dist[a] = src[a];
-		}
-	}
 }
