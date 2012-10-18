@@ -15,7 +15,9 @@ public class Patient{
 	public Patient getNext(){
 	    return next;
 	}
-	
+	public Patient getPrev(){
+	    return prev;
+	}
 	public String getName(){
 	return name;
 	}
@@ -25,10 +27,23 @@ public class Patient{
 	public int getAge(){
 	return age;
 	}
-	
+
+    public boolean deletePatient(Patient thePatient){
+	    if(this.next == null){
+		    return false;
+		} else if(this.next.name.equals(thePatient.name)){
+		    this.next = next.next;
+			this.next.next.prev = this;
+			return true;
+		} else {
+		    return this.next.deletePatient(thePatient);
+		}
+	}
+		
 	public void addPatient(Patient newPatient){
 	    if(this.next == null){
 		    this.next = newPatient;
+			newPatient.prev = this;
 		} else { 
 		    this.next.addPatient(newPatient);
 		}
