@@ -1,15 +1,21 @@
 public class ArrayCopier{
+	
+	public void copy(int[] src, int[] dst){
 
-	public void copy(int[] x, int[] y){
-		int i;
-		for(i=0; i<x.length&&i<y.length; i++){
-			y[i]=x[i];
+		for(int i = 0; i < dst.length; i ++){
+
+			if(i<src.length){
+				dst[i] = src[i];
+
+			} else {
+
+				dst[i] = 0;
+			}
 		}
-		
-		while(i<y.length){
-			y[i]=0;
-			i++;
+
+		for(int a = 0; a < dst.length; a++){
+
+			System.out.println(dst[a]);
 		}
 	}
-	
 }
